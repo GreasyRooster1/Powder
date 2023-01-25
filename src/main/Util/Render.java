@@ -9,6 +9,7 @@ public class Render {
     public static void mainRendering(){
         partUpdating();
         buttonUpdating();
+        drawFps();
     }
     static void partUpdating(){
         for(Element e : World.PARTS) {
@@ -28,5 +29,9 @@ public class Render {
         for(Button b : Controls.buttons){
             b.update();
         }
+    }
+    static void drawFps(){
+        Applet.get().fill(255);
+        Applet.get().text("FPS: "+Applet.get().frameRate,10,10);
     }
 }

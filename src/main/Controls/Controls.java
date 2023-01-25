@@ -24,11 +24,7 @@ public class Controls {
     }
     public static void main() {
         if(Applet.get().mousePressed) {
-            try {
-                placeParts();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            placeParts();
         }
     }
     public static void placeParts() {
@@ -45,7 +41,7 @@ public class Controls {
             }
         }
     }
-    public static void renderButtons(){
-
+    public static void toggleHeat(){
+        World.HEAT_VIEW = !World.HEAT_VIEW;
     }
 }

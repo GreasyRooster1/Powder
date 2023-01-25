@@ -8,5 +8,6 @@ public class Dust extends PowderState {
         super(x, y);
         setName("dust");
         setColor(Applet.color(255, 218, 166));
+        setHeatConductivity(0.023f);
     }
 }

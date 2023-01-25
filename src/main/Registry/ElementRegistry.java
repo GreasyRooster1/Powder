@@ -15,6 +15,8 @@ public class ElementRegistry {
     public static void startRegister(){
         register("dust", Dust.class);
         register("wall", Wall.class);
+        register("water", Water.class);
+        register("fire", Fire.class);
     }
 
     public static Element getElementByName(String name,int x,int y) {

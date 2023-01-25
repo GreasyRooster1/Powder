@@ -23,4 +23,9 @@ public class Main extends PApplet {
     public static void main(String[] args) {
         PApplet.main("main.Main");
     }
+    public void keyReleased(){
+        if(key=='h'){
+            Controls.toggleHeat();
+        }
+    }
 }
