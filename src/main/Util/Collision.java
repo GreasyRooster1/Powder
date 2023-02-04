@@ -30,11 +30,9 @@ public class Collision {
         return false;
     }
     public static boolean placeFree(int x,int y){
-        for(Element e:World.PARTS){
-            if(e.getX() ==x&& e.getY() ==y){
-                return false;
-            }
+        if(!World.validPosition(x,y)){
+            return false;
         }
-        return true;
+        return World.PARTS[World.worldPos(x, y)] == null;
     }
 }

@@ -13,17 +13,15 @@ public class Render {
     }
     static void partUpdating(){
         for(Element e : World.PARTS) {
+            if(e==null){continue;}
             if (!e.isDead()) {
-                e.update();
+                if(e.getLastUpdated()!=Applet.get().frameCount) {
+                    e.update();
+                }
+            }else{
+                World.PARTS[World.worldPos(e.getX(),e.getY())] = null;
             }
         }
-        Element[] out = {};
-        for (Element e : World.PARTS) {
-            if(!e.isDead()){
-                out = (Element[]) PApplet.append(out,e);
-            }
-        }
-        World.PARTS=out;
     }
     static void buttonUpdating(){
         for(Button b : Controls.buttons){
@@ -33,5 +31,6 @@ public class Render {
     static void drawFps(){
         Applet.get().fill(255);
         Applet.get().text("FPS: "+Applet.get().frameRate,10,10);
+        Applet.get().text("Parts: "+World.PARTS.length,10,20);
     }
 }

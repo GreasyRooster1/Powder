@@ -2,9 +2,9 @@ package main.Registry;
 
 import main.Element.Element;
 import main.Elements.*;
+import main.Util.World;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
 import static processing.core.PApplet.append;
@@ -17,6 +17,8 @@ public class ElementRegistry {
         register("wall", Wall.class);
         register("water", Water.class);
         register("fire", Fire.class);
+        register("lava", Lava.class);
+        register("clone", Clone.class);
     }
 
     public static Element getElementByName(String name,int x,int y) {
@@ -34,10 +36,6 @@ public class ElementRegistry {
 
                 }
             }
-        }
-        if(ret!=null) {
-            ret.setX(x);
-            ret.setY(y);
         }
         return ret;
     }

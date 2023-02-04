@@ -19,4 +19,10 @@ public class Applet {
     public static int worldMouseY(){
         return Applet.get().mouseY/World.PIXEL_SIZE;
     }
+    public static int worldpMouseX(){
+        return Applet.get().pmouseX/World.PIXEL_SIZE;
+    }
+    public static int worldpMouseY(){
+        return Applet.get().pmouseY/World.PIXEL_SIZE;
+    }
 }

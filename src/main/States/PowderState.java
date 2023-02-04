@@ -16,13 +16,11 @@ public class PowderState extends Element {
         }else{
             if(PApplet.round(Applet.get().random(0,1))==0) {
                 if(Collision.placeFree(getX()+1,getY()+1)) {
-                    changeY(1);
-                    changeX(1);
+                    move(1,1);
                 }
             }else{
                 if(Collision.placeFree(getX()-1,getY()+1)) {
-                    changeY(1);
-                    changeX(-1);
+                    move(-1,1);
                 }
             }
         }

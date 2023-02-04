@@ -10,6 +10,7 @@ public class Wall extends SolidState {
         setName("wall");
         setColor(Applet.color(127,127,127));
         setHeatConductivity(0.05f);
+        setIndestructible(true);
     }
 
 }
