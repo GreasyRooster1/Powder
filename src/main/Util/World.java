@@ -2,6 +2,8 @@ package main.Util;
 
 import main.Element.Element;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 import static processing.core.PApplet.append;
 
 public class World {
@@ -18,7 +20,7 @@ public class World {
         }
     }
     public static int worldPos(int x,int y){
-        return (y*WORLD_WIDTH)+x;
+        return max(min((y*WORLD_WIDTH)+x,249999),0);
     }
     public static boolean validPosition(int x,int y){
         return (worldPos(x,y)<PARTS.length-1&&worldPos(x,y)>=0);

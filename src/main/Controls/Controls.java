@@ -1,6 +1,7 @@
 package main.Controls;
 
 import main.Controls.Buttons.Button;
+import main.Controls.Buttons.ClearButton;
 import main.Controls.Placing.Placing;
 import main.Element.Element;
 import main.Registry.ElementRegistry;
@@ -18,12 +19,15 @@ import static processing.core.PApplet.*;
 public class Controls {
     public static String cElement = "dust";
     public static Button[] buttons = {};
+    public static boolean clear = false;
+
     public static void setupButtons(){
         int i=0;
         for(RegisteredElement r: ElementRegistry.registry){
             buttons = (Button[]) append(buttons,new Button(i*50,1000,r.name));
             i++;
         }
+        buttons = (Button[]) append(buttons,(Button)new ClearButton(950,1000));
     }
     public static void main() {
         if(Applet.get().mousePressed) {
@@ -31,7 +35,7 @@ public class Controls {
         }
     }
     public static void placeParts() {
-        if(placeFree(Applet.worldMouseX(),Applet.worldMouseY())) {
+        if(placeFree(Applet.worldMouseX(),Applet.worldMouseY())&&!clear) {
             if(Applet.get().mouseButton==PConstants.LEFT) {
                 Placing.placeParts(cElement, Applet.worldMouseX(), Applet.worldMouseY());
                 float distance = PApplet.dist(Applet.worldMouseX(),Applet.worldMouseY(),Applet.worldpMouseY(),Applet.worldpMouseY());
@@ -44,6 +48,9 @@ public class Controls {
                     }
                 }
             }
+        }
+        if(clear){
+            World.PARTS[World.worldPos(Applet.worldMouseX(), Applet.worldMouseY())] = null;
         }
         if(Applet.get().mouseButton==PConstants.RIGHT) {
             World.PARTS[World.worldPos(Applet.worldMouseX(),Applet.worldMouseY())] = null;

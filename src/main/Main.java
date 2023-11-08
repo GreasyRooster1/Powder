@@ -9,16 +9,22 @@ import processing.core.PApplet;
 import static main.Controls.Controls.toggleLoop;
 
 public class Main extends PApplet {
+    float scale = 1F;
     public void setup(){
         Applet.set(this);
         ElementRegistry.startRegister();
         Controls.setupButtons();
         frameRate(60);
+
+        //windowResizable(true);
     }
     public void settings(){
-        size(1000,1030);
+
+        size((int) (1000*scale), (int) (1030*scale));
+
     }
     public void draw(){
+        scale(scale);
         background(0);
         Render.mainRendering();
         Controls.main();
